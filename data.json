@@ -1,0 +1,45 @@
+{
+"batchcomplete":"",
+"continue":
+    {
+        "gsroffset":2,
+        "continue":"gsroffset||"
+    },
+"query":
+    {"pages":
+        {
+            "63030231":
+                {"pageid":63030231,
+                "ns":0,
+                "title":"COVID-19",
+                "index":1,
+                "thumbnail":
+                    {
+                        "source":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Fphar-11-00937-g001.jpg/50px-Fphar-11-00937-g001.jpg",
+                        "width":50,
+                        "height":28
+                    },
+                "pageimage":"Fphar-11-00937-g001.jpg",
+                "extract":"Coronavirus disease 2019 (COVID-19) is a contagious disease caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2)."
+                },
+            "62750956":
+                {"pageid":62750956,
+                "ns":0,
+                "title":"COVID-19 pandemic",
+                "index":2,
+                "thumbnail":
+                    {
+                        "source":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/COVID-19_Nurse.jpg/50px-COVID-19_Nurse.jpg",
+                        "width":50,
+                        "height":28
+                    },
+                    "pageimage":"COVID-19_Nurse.jpg",
+                    "extract":"The COVID-19 pandemic, also known as the coronavirus pandemic, is an ongoing global pandemic of coronavirus disease 2019 (COVID-19) caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2)."
+                }
+            }
+        },
+        "limits":
+        {"pageimages":50,
+        "extracts":20
+    }
+}
