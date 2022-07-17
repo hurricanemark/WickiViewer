@@ -10,7 +10,7 @@
   }
 
   /* Style the search field */
-  form.example input[type=text] {
+  form.tiki input[type=text] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
@@ -20,7 +20,7 @@
   }
   
   /* Style the submit button */
-  form.example button {
+  form.tiki button {
     float: left;
     width: 20%;
     padding: 10px;
@@ -32,12 +32,12 @@
     cursor: pointer;
   }
   
-  form.example button:hover {
+  form.tiki button:hover {
     background: #0b7dda;
   }
   
   /* Clear floats */
-  form.example::after {
+  form.tiki::after {
     content: "";
     clear: both;
     display: table;

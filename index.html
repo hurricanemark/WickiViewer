@@ -8,64 +8,28 @@
 
     <!-- Load icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/random.js"></script>
-    <!-- <script src="js/search.js"></script> -->
+    <script type="module" src="js/search.js"></script>
+    
+
 </head>
 <body>
     <h1>Clear View Wikipedia</h1>
-
-    <!-- The form -->
-    <form class="example">
-        <input type="text" placeholder="Enter subject.." name="search" id="_search">
-        <button id="search_arti"><em class="fa fa-search"></em></button>
-        <br />
-        <div id="_search_article"></div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('#_search_article').hide();
-                $('#_random_article').hide();
-                $('#search_arti').click(function() {
-                    var inputStr = $('#_search').val();
-                    $.ajax({
-                        url: 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=5&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=' + inputStr,
-                        type: 'GET',
-                        success: function(data) {
-                            console.log(data);
-                            if(navigator.onLine) {
-                                $('#_search_article').html('');
-                                $('#_search_article').show();
-                                $('#_random_article').hide();
-                                var pages = data.query.pages;
-                                for(var i in pages) {
-                                    var page = pages[i];
-                                    var title = page.title;
-                                    var extract = page.extract;
-                                    var pageid = page.pageid;
-                                    var url = 'https://en.wikipedia.org/?curid=' + pageid;
-                                    $('#_search_article').append('<a href="' + url + '" target="_blank"><h3>' + title + '</h3></a><p>' + extract + '</p>');
-                                }
-                                $('#_search_article').show();
-
-                            } else {
-                                alert('Please check your internet connection.');
-                            }
-                                
-                            //processData(data);
-                        },
-                        error: function(error) {
-                            console.log(`Error ${error}`);
-                        }   
-                    })
-
-                });
-            });
-        </script>
-    </form>
+    
+    <header class="header">
+        <!-- The form -->
+        <form class="tiki">
+            <input type="text" placeholder="Enter subject.." id="_search-text" autofocus>
+            <button  onclick="getWikiMatch(document.getElementById('._search-text').value )"><em class="fa fa-search"></em></button>
+            <br />
+            <!-- <div id="_search_article"></div> -->
+        </form>
+    </header>
     <br />
     <div>
         <p>Or click below for a random article from Wikipedia</p>
@@ -77,63 +41,9 @@
         <iframe id="_random_article" class="responsive-iframe" style="display:none;" src="https://en.wikipedia.org/wiki/Special:Random"></iframe>
     </div>
 
-<!--     <div class="container">
+    <div class="container">
         <div id="_search_article" class="responsive-iframe" style="display:none;" ></div>
-    </div>    -->     
-
-    <script type="text/javascript">
-        function getWikiMatch() {
-            let inputStr = document.getElementById('_search').value;
-            var usrStr = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=5&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=' + inputStr;
-            const xhr = new XMLHttpRequest();
-alert(usrStr);
-console.log(usrStr);
-            xhr.open("GET", usrStr, true);
-            xhr.onreadystatechange = function () {
-                // In local files, status is 0 upon success in Mozilla Firefox
-                if(xhr.readyState === XMLHttpRequest.DONE) {
-                    var status = xhr.status;
-                    if (status === 0 || (status >= 200 && status < 400)) {
-                        // The request has been completed successfully
-                        alert(xhr.responseText);
-                        console.log(xhr.responseText);
-                        processData(xhr.responseText);
-                    } else {
-                        // Oh no! There has been an error with the request!
-                        alert("Error: " + status);
-                    }
-                }
-            };
-            xhr.send();
-            /* --- */
-            function processData(data) {
-                var page = data.query.pages;
-                let segment = '<div class="cards">';
-                alert(data);
-                for (var key in page) {
-                    if (page.hasOwnProperty(key)) {
-                        alert('Title#' + page[key].index + ' ' + page[key].title + "\n"
-                        + 'Page ID: ' + page[key].pageid + "\n"
-                        + 'Extract: ' + page[key].extract + "\n\n");
-                        
-                        /* write into vertical cards */
-                        segment += '<div class="card shadow-1">' + '<h3>' + page[key].title + '</h3>' + '<p>' + page[key].extract + '</p>' + '</div>';
-                    }
-                    segment += '</div>';
-                }
-                alert(segment);
-                if (segment !== "") {
-                    var wiki_data = document.querySelector('._search_article');
-                    wiki_data.innerHTML = segment;
-                    wiki_data.style.display = "none";
-                    document.getElementById('_random_article').style.display = "block";
-
-                    document.getElementById('_search_article').innerHTML = result;
-                    // document.getElementById('_search_article').style.display = "none";
-                    document.getElementById('_search_article').appendChild(div);
-                }
-            }
-        }
-    </script>
+    </div>     
+    
 </body>
 </html>
