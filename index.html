@@ -61,7 +61,7 @@
             for (let i = 0; results.length; i++) {
                 let div = document.createElement("div");
                 let segmentHTML = "";
-                const articleUrl = `<a href="https://en.wikipedia.org/wiki/${results[i].title}">${results[i].title}</a>`;
+                const articleUrl = `<a href="https://en.wikipedia.org/wiki/${results[i].title}" target="_blank">${results[i].title}</a>`;
                 const articleSnippetHtml = `<p>${results[i].snippet}</p><br />`;
                 segmentHTML = articleUrl + articleSnippetHtml;
                 div.innerHTML = segmentHTML;
