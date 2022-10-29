@@ -1,4 +1,4 @@
-const form = document.querySelector('.tiki');
+const form = document.querySelector('tiki');
 
 form.addEventListener('_search', handleSubmit);
 
