@@ -58,6 +58,7 @@
         function renderWickiHTML(data) {
             const results = data.query.search;
             const resultsList = document.getElementById('searchdata');
+            resultsList.innerHTML = "";
             for (let i = 0; results.length; i++) {
                 let div = document.createElement("div");
                 let segmentHTML = "";
@@ -73,6 +74,7 @@
         function displayRandom() {
             var rframe = document.getElementById("articles");
             var sframe = document.getElementById("searchdata");
+
             /* toggles the display of the random article */
             if (rframe.style.display === "none") {
                 rframe.style.display = "block";
